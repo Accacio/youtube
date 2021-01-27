@@ -1,0 +1,11 @@
+#+TITLE: Pico/Nano
+
+* Pico (Pine Composer)
+1999
+- Baseado no editor de texto do programa de email Pine
+** Pine
+- Universidade de Washington 1992
+    cliente mais intuitivo para usuários mais "normais"
+    com um editor de texto integrado
+
+Atualmente trocado pelo Alpine (licensa)

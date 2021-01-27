@@ -1,0 +1,420 @@
+# -*- ispell-dictionary: "pt"; ispell-complete-word-dict: "/usr/share/dict/portuguese"  -*-
+#+TITLE: Programação Literária e org mode
+#+OPTIONS: H:2 toc:nil num:t tags:nil
+#+language: pt
+#+LATEX_header: \usepackage[portuguese]{babel}
+
+* Definição / História
+** Definição Criação
+- Paradigma de Programação
+- Criado por Donald Knuth em 1981
+
+#+BEGIN_SRC bash :results file :file /tmp/literate.jpg :exports results
+wget -O - https://upload.wikimedia.org/wikipedia/en/thumb/6/62/Literate_Programming_book_cover.jpg/220px-Literate_Programming_book_cover.jpg
+#+END_SRC
+
+#+Caption: Literate Programming - Donald Knuth
+#+ATTR_HTML: :width 200
+#+ATTR_LATEX: :width 0.3\textwidth
+#+RESULTS:
+[[file:/tmp/literate.jpg]]
+
+** Donald Knuth
+*** Donald
+:PROPERTIES:
+:BEAMER_COL: 0.45
+:END:
+
+# https://www.nytimes.com/2018/12/17/science/donald-knuth-computers-algorithms-programming.html
+#+BEGIN_SRC bash :results file :file /tmp/don2.jpg :exports results
+wget -O - https://static01.nyt.com/images/2018/12/18/science/18SCI-KNUTH1/merlin_148126767_cd44bb13-bc4d-4eeb-b1b7-73cc4dc174e7-superJumbo.jpg?quality=90&auto=webp
+#+END_SRC
+
+#+Caption: Donald Knuth
+#+ATTR_HTML: :width 400
+#+ATTR_LATEX: :width \textwidth :placement [H]
+#+RESULTS:
+[[file:/tmp/don2.jpg]]
+
+*** Criações
+:PROPERTIES:
+:BEAMER_COL: 0.45
+:END:
+#+begin_quote
+O Yoda do Vale do silício
+---NY Times
+#+end_quote
+- [[https://pt.wikipedia.org/wiki/Nota%C3%A7%C3%A3o_de_Knuth][Notação de Knuth ]]: $4\uparrow3=4\times4\times4$ , $2\uparrow\uparrow3=2^{2^2}$ ...
+- [[https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming][ The Art of Computer Programming]]
+- $\TeX$
+- METAFONT
+- Fantasia Apocalyptica (Tradução do Apocalipse de São João em música)
+** Objetivo
+- A partir de um só arquivo
+  - gerar o código
+  - e sua documentação.
+* Programas
+** Web - Teia
+- Criado por Knuth escrito em Pascal
+  - código gerado em Pascal
+  - $\TeX$ como linguagem de Formatação de texto.
+
+** Operações: Weave tangle
+1. tangle (emaranhar) -> exportar documentação
+http://ctan.math.washington.edu/tex-archive/systems/knuth/dist/web/tangle.web
+2. weave (tecer) -> exportar código
+http://ctan.math.washington.edu/tex-archive/systems/knuth/dist/web/weave.web
+  
+#+begin_src ditaa :file /tmp/web.png
+                  +-------------+
+                  | .web (teia) |
+                  | cGRE        |
+                  +------+------+
+                         |
+             +-----------+-------------------+
+             |                               |
+  +----------+------------\         /--------+--------+
+  |   tangle (emaranhar)  |         |   weave (tecer) |
+  |  cBLU                 |         |  cYEL           |
+  \----------+------------+         +--------+--------/
+             |                               |
+             v                               v
+      +------+-------\               /--------+--------+
+      | Texto (.tex) |               | Código (.pas)   |
+      | cBLU         |               | cYEL            |
+      \--------------+               +-----------------/
+#+END_SRC
+
+#+RESULTS:
+[[file:/tmp/web.png]]
+
+
+
+** $\TeX$ - Formatação de texto
+#+begin_quote
+12 palavras por linha!!
+#+end_quote
+- Objetivo:
+    Aumentar a facilidade da leitura do texto, evitando hifens em quebra de
+  linha, reduzir número de palavras por linha e seguir outras regras da
+  tipografia.
+
+- Código web
+  - http://ctan.math.washington.edu/tex-archive/systems/knuth/dist/tex/tex.web
+
+- The TeX Book
+  https://www.amazon.com/the-texbook-donald-e-knuth/dp/0201134489
+
+** METAFONT - Criação de tipos para serem usados no $\TeX$
+
+#+begin_quote
+Controle total de pontos.
+#+end_quote
+
+
+- Objetivo:
+    Simular pincéis e caligrafias usando curvas de Bézier, a fim de criar tipos mais sofisticados com serifas e afins que fossem mais parecidos com tipos de prensas a tipos móveis convencionais mas que pudessem ser impressos em impressoras da época.
+
+- Código web
+  - http://ctan.math.washington.edu/tex-archive/systems/knuth/dist/mf/mf.web
+
+- The METAFONT Book
+  - https://www.amazon.com/Metafont-Book-Donald-Knuth/dp/0201134446/ref=sr_1_2?dchild=1&keywords=the+metafont+book&qid=1590237708&s=books&sr=1-2
+** METAFONT - Exemplos
+#+BEGIN_SRC bash :results file :file /tmp/tipos.jpg :exports results
+wget -O - https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F5%2F5e%2FMetal_movable_text.jpg
+#+END_SRC
+
+#+caption: Tipos para prensa convencional.
+#+ATTR_HTML: :width 400
+#+ATTR_LATEX: :width 0.7\textwidth
+#+RESULTS:
+[[file:/tmp/tipos.jpg]]
+** METAFONT - Exemplos
+#+BEGIN_SRC bash :results file :file /tmp/metafont.jpg :exports results
+wget -O - https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.win.tue.nl%2F~aeb%2Ftex%2Fmf%2Faa.png
+#+END_SRC
+
+#+caption: Um tipo criado usando METAFONT.
+#+ATTR_HTML: :width 400
+#+ATTR_LATEX: :width 0.4\textwidth
+#+RESULTS:
+[[file:/tmp/metafont.jpg]]
+
+** METAFONT - Exemplos
+#+BEGIN_SRC bash :results file :file /tmp/simpsons-metafont.jpg :exports results
+wget -O - http://i.stack.imgur.com/9v0xs.png
+#+END_SRC
+
+#+caption: Tipos com os Simpsons criados usando METAFONT.
+#+ATTR_HTML: :width 600
+#+ATTR_LATEX: :width \textwidth
+#+RESULTS:
+[[file:/tmp/simpsons-metafont.jpg]]
+
+
+
+** 'Hoje em Dia' - Ciência
+- 2003 - Carsten Dominik - *Emacs org-mode*
+- 2005 - Jupyter Project (Jupyter Notebook antigo Ipython Notebook )  Python, Julia, Scala ...
+- MATLAB Live Code, Mathematica Notebooks
+- outros
+** Cweb e outros
+- 1987 - Silvio Levy e Donald Knuth reescreveram web adaptado para C e C++.
+
+#+ATTR_LATEX: :width 0.5\textwidth
+| Nome           | Código                 | Escrito em     | Formatação               |
+|----------------+------------------------+----------------+--------------------------|
+| WEB            | Pascal                 | Pascal         | TeX                      |
+| CWEB           | C(++)                  | C              | TeX                      |
+| NoWEB          | Qualquer               | C, AWK, e Icon | LaTeX, TeX, HTML e troff |
+| Literate       | Qualquer               | D              | Markdown                 |
+| FunnelWeb      | Qualquer               | C              | HTML e TeX               |
+| NuWEB          | Qualquer               | C++            | LaTeX                    |
+| pyWeb          | Qualquer               | Python         | ReStructuredText         |
+| Molly          | Qualquer               | Perl           | HTML                     |
+| Org-mode       | Qualquer               | Emacs Lisp     | Texto Simples            |
+/Adaptado de/ https://pt.wikipedia.org/wiki/Programação_literária
+
+* Emacs org mode
+** Organização em texto simples (plain text)
+** Possibilidade de rodar o código dentro do arquivo
+#+BEGIN_SRC bash :results output
+echo "oi mundo"
+#+END_SRC
+
+#+RESULTS:
+: oi mundo
+
+#+BEGIN_SRC python :results output
+print("oi")
+#+END_SRC
+
+#+RESULTS:
+: oi
+
+#+BEGIN_SRC C :results output
+printf("ola");
+#+END_SRC
+
+#+RESULTS:
+: ola
+
+#+begin_src C++ :includes <iostream>
+  std::cout<<"ola World!\n";
+#+end_src
+
+#+RESULTS:
+: ola World!
+
+#+BEGIN_SRC octave :results output
+disp("hello");
+#+END_SRC
+
+#+RESULTS:
+: hello
+** Uso de dados
+#+name: dados do operador de Energia da california valores em MW
+#+BEGIN_SRC bash
+curl 'http://www.caiso.com/outlook/SP/fuelsource.csv'
+#+END_SRC
+
+#+RESULTS: dados do operador de Energia da california valores em MW
+|  Time | Solar | Wind | Geothermal | Biomass | Biogas | Small hydro | Coal | Nuclear | Natural gas | Large hydro | Batteries | Imports | Other |
+| 00:00 |   -38 | 4176 |        926 |     351 |    222 |         341 |   11 |    2257 |        6023 |        2263 |       -18 |    9315 |     0 |
+| 00:05 |   -37 | 4140 |        926 |     353 |    221 |         340 |   10 |    2257 |        6034 |        2218 |         5 |    9289 |     0 |
+| 00:10 |   -37 | 4124 |        925 |     352 |    221 |         337 |   10 |    2257 |        6011 |        2225 |        16 |    9219 |     0 |
+| 00:15 |   -37 | 4157 |        925 |     352 |    221 |         334 |    9 |    2257 |        5773 |        2224 |        18 |    9279 |     0 |
+| 00:20 |   -37 | 4184 |        925 |     353 |    222 |         334 |    9 |    2257 |        5562 |        2226 |        14 |    9325 |     0 |
+| 00:25 |   -37 | 4200 |        925 |     352 |    222 |         330 |    9 |    2256 |        5404 |        2211 |        12 |    9326 |     0 |
+| 00:30 |   -37 | 4231 |        925 |     353 |    221 |         324 |   10 |    2257 |        5384 |        2203 |         2 |    9186 |     0 |
+| 00:35 |   -37 | 4236 |        925 |     353 |    221 |         324 |   10 |    2256 |        5295 |        2181 |        -1 |    9147 |     0 |
+| 00:40 |   -37 | 4248 |        927 |     352 |    222 |         324 |   10 |    2256 |        5275 |        2158 |        -4 |    9056 |     0 |
+| 00:45 |   -37 | 4256 |        927 |     351 |    222 |         323 |   10 |    2256 |        5193 |        2141 |        -6 |    8980 |     0 |
+| 00:50 |   -37 | 4240 |        928 |     351 |    221 |         323 |   10 |    2256 |        5177 |        2077 |         3 |    8909 |     0 |
+| 00:55 |   -37 | 4221 |        927 |     353 |    221 |         322 |   10 |    2256 |        5105 |        2120 |        -4 |    8859 |     0 |
+| 01:00 |   -37 | 4240 |        927 |     353 |    221 |         321 |   10 |    2255 |        4941 |        2079 |         3 |    8870 |     0 |
+| 01:05 |   -37 | 4230 |        927 |     352 |    221 |         321 |   11 |    2255 |        4542 |        2043 |        96 |    9126 |     0 |
+| 01:10 |   -37 | 4198 |        927 |     352 |    221 |         322 |   11 |    2254 |        4381 |        1956 |        69 |    9231 |     0 |
+| 01:15 |   -37 | 4224 |        927 |     351 |    221 |         322 |   10 |    2254 |        4358 |        1875 |        -6 |    9299 |     0 |
+| 01:20 |   -37 | 4212 |        928 |     351 |    222 |         322 |   10 |    2254 |        4273 |        1812 |       -82 |    9479 |     0 |
+| 01:25 |   -37 | 4223 |        929 |     352 |    221 |         321 |   10 |    2254 |        4259 |        1832 |       -85 |    9449 |     0 |
+| 01:30 |   -37 | 4212 |        929 |     352 |    222 |         322 |   10 |    2253 |        4189 |        1882 |       -12 |    9223 |     0 |
+| 01:35 |   -37 | 4151 |        929 |     349 |    222 |         321 |   10 |    2254 |        4123 |        1894 |         8 |    9122 |     0 |
+| 01:40 |   -37 | 4134 |        931 |     350 |    222 |         321 |   10 |    2254 |        4053 |        1889 |        -1 |    9072 |     0 |
+| 01:45 |   -37 | 4095 |        929 |     349 |    222 |         320 |   10 |    2253 |        4009 |        1900 |         8 |    9040 |     0 |
+| 01:50 |   -37 | 4101 |        930 |     349 |    222 |         321 |   10 |    2254 |        3906 |        1877 |         3 |    9058 |     0 |
+| 01:55 |   -37 | 4124 |        929 |     352 |    222 |         321 |   10 |    2253 |        3853 |        1798 |        -7 |    9028 |     0 |
+| 02:00 |   -36 | 4116 |        929 |     354 |    222 |         321 |   10 |    2253 |        3846 |        1666 |         0 |    9062 |     0 |
+| 02:05 |   -36 | 4117 |        924 |     352 |    222 |         323 |   10 |    2253 |        3817 |        1538 |         8 |    9107 |     0 |
+| 02:10 |   -36 | 4130 |        928 |     350 |    222 |         323 |   10 |    2253 |        3761 |        1457 |        10 |    9136 |     0 |
+| 02:15 |   -35 | 4105 |        929 |     352 |    222 |         323 |   10 |    2253 |        3779 |        1437 |         3 |    9087 |     0 |
+| 02:20 |   -36 | 4104 |        929 |     351 |    222 |         323 |   10 |    2253 |        3705 |        1406 |        -2 |    9061 |     0 |
+| 02:25 |   -36 | 4095 |        930 |     352 |    222 |         322 |   10 |    2254 |        3746 |        1391 |        -2 |    8991 |     0 |
+| 02:30 |   -36 | 4100 |        931 |     351 |    223 |         322 |   10 |    2254 |        3714 |        1370 |        -2 |    8926 |     0 |
+| 02:35 |   -36 | 4077 |        930 |     350 |    222 |         321 |   10 |    2254 |        3702 |        1399 |       -12 |    8885 |     0 |
+| 02:40 |   -36 | 4083 |        930 |     349 |    222 |         321 |   10 |    2255 |        3640 |        1386 |       -21 |    8872 |     0 |
+| 02:45 |   -36 | 4064 |        930 |     351 |    222 |         321 |   10 |    2255 |        3589 |        1367 |        -2 |    8875 |     0 |
+| 02:50 |   -36 | 4046 |        930 |     352 |    222 |         321 |    9 |    2254 |        3523 |        1363 |       -18 |    8968 |     0 |
+| 02:55 |   -35 | 4027 |        930 |     352 |    222 |         321 |    9 |    2255 |        3449 |        1395 |        -9 |    8916 |     0 |
+| 03:00 |   -36 | 3968 |        930 |     351 |    223 |         321 |   10 |    2254 |        3391 |        1423 |        -9 |    8905 |     0 |
+| 03:05 |   -36 | 3912 |        932 |     351 |    223 |         322 |   10 |    2254 |        3468 |        1536 |         8 |    8697 |     0 |
+| 03:10 |   -37 | 3845 |        932 |     352 |    223 |         322 |   11 |    2254 |        3469 |        1573 |         0 |    8636 |     0 |
+| 03:15 |   -37 | 3808 |        932 |     351 |    223 |         322 |   10 |    2253 |        3473 |        1572 |        -1 |    8578 |     0 |
+| 03:20 |   -37 | 3782 |        932 |     351 |    223 |         322 |   11 |    2254 |        3461 |        1560 |       -16 |    8561 |     0 |
+| 03:25 |   -37 | 3775 |        932 |     351 |    223 |         323 |   10 |    2253 |        3410 |        1558 |       -14 |    8571 |     0 |
+| 03:30 |   -37 | 3769 |        931 |     353 |    223 |         323 |   11 |    2253 |        3342 |        1537 |         0 |    8552 |     0 |
+| 03:35 |   -38 | 3737 |        931 |     351 |    224 |         323 |   10 |    2253 |        3291 |        1545 |        -3 |    8594 |     0 |
+| 03:40 |   -38 | 3738 |        930 |     351 |    222 |         321 |   11 |    2252 |        3186 |        1534 |       -16 |    8675 |     0 |
+| 03:45 |   -38 | 3731 |        930 |     352 |    223 |         321 |   11 |    2253 |        3211 |        1508 |       -12 |    8636 |     0 |
+| 03:50 |   -38 | 3724 |        930 |     352 |    223 |         322 |   11 |    2252 |        3124 |        1502 |         1 |    8691 |     0 |
+| 03:55 |   -38 | 3727 |        931 |     350 |    223 |         322 |   11 |    2252 |        3124 |        1497 |       -18 |    8660 |     0 |
+| 04:00 |   -38 | 3724 |        930 |     350 |    223 |         321 |   10 |    2252 |        3188 |        1427 |       -11 |    8625 |     0 |
+| 04:05 |   -38 | 3678 |        932 |     351 |    223 |         323 |   11 |    2252 |        3122 |        1326 |        -4 |    8779 |     0 |
+| 04:10 |   -38 | 3641 |        933 |     350 |    223 |         331 |   11 |    2252 |        2990 |        1289 |         0 |    8958 |     0 |
+| 04:15 |   -39 | 3592 |        933 |     351 |    222 |         334 |   11 |    2252 |        2904 |        1297 |         1 |    9075 |     0 |
+| 04:20 |   -38 | 3556 |        933 |     351 |    222 |         335 |   11 |    2252 |        2898 |        1312 |         0 |    9059 |     0 |
+| 04:25 |   -39 | 3513 |        933 |     350 |    222 |         335 |   11 |    2252 |        2908 |        1315 |         0 |    9030 |     0 |
+| 04:30 |   -38 | 3451 |        933 |     352 |    222 |         336 |   11 |    2253 |        2915 |        1309 |         0 |    9058 |     0 |
+| 04:35 |   -38 | 3395 |        934 |     351 |    222 |         335 |   11 |    2252 |        2934 |        1309 |         0 |    9058 |     0 |
+| 04:40 |   -38 | 3364 |        933 |     349 |    222 |         336 |   11 |    2252 |        2935 |        1307 |         0 |    9069 |     0 |
+| 04:45 |   -39 | 3322 |        932 |     349 |    222 |         335 |   11 |    2251 |        2923 |        1300 |         0 |    9106 |     0 |
+| 04:50 |   -39 | 3312 |        933 |     350 |    222 |         335 |   11 |    2252 |        2924 |        1300 |         0 |    9073 |     0 |
+| 04:55 |   -39 | 3263 |        933 |     353 |    222 |         334 |   11 |    2252 |        2897 |        1285 |         0 |    9144 |     0 |
+| 05:00 |   -39 | 3245 |        934 |     356 |    222 |         334 |   10 |    2252 |        2907 |        1307 |        -1 |    9127 |     0 |
+| 05:05 |   -39 | 3279 |        933 |     359 |    222 |         333 |   11 |    2252 |        2911 |        1541 |         0 |    8969 |     0 |
+| 05:10 |   -40 | 3306 |        934 |     361 |    222 |         334 |   12 |    2251 |        2729 |        1660 |         0 |    8958 |     0 |
+| 05:15 |   -41 | 3327 |        933 |     361 |    222 |         333 |   11 |    2252 |        2683 |        1650 |        -8 |    8965 |     0 |
+| 05:20 |   -41 | 3315 |        933 |     363 |    223 |         332 |   11 |    2252 |        2689 |        1651 |        -3 |    8959 |     0 |
+| 05:25 |   -41 | 3296 |        932 |     364 |    222 |         332 |   11 |    2253 |        2687 |        1657 |        -5 |    8945 |     0 |
+| 05:30 |   -41 | 3309 |        931 |     363 |    222 |         332 |   11 |    2251 |        2673 |        1664 |         1 |    8935 |     0 |
+| 05:35 |   -41 | 3337 |        931 |     364 |    222 |         333 |   11 |    2253 |        2670 |        1640 |        -6 |    8894 |     0 |
+| 05:40 |   -41 | 3338 |        934 |     364 |    223 |         333 |   11 |    2253 |        2658 |        1648 |         0 |    8841 |     0 |
+| 05:45 |   -35 | 3337 |        935 |     363 |    222 |         333 |   11 |    2253 |        2567 |        1641 |         0 |    8817 |     0 |
+| 05:50 |   -13 | 3336 |        934 |     363 |    222 |         335 |   11 |    2253 |        2519 |        1649 |         0 |    8776 |     0 |
+| 05:55 |    20 | 3361 |        934 |     365 |    222 |         336 |   12 |    2253 |        2483 |        1623 |        -1 |    8666 |     0 |
+| 06:00 |    96 | 3364 |        932 |     371 |    222 |         336 |   12 |    2253 |        2445 |        1522 |         0 |    8600 |     0 |
+| 06:05 |   213 | 3347 |        933 |     375 |    222 |         329 |   12 |    2252 |        2636 |        1074 |        13 |    8850 |     0 |
+| 06:10 |   367 | 3292 |        933 |     377 |    222 |         316 |   12 |    2252 |        2928 |         939 |        24 |    8858 |     0 |
+| 06:15 |   583 | 3274 |        933 |     377 |    222 |         314 |   12 |    2253 |        2919 |         897 |        24 |    8617 |     0 |
+| 06:20 |   894 | 3234 |        933 |     378 |    222 |         314 |   12 |    2253 |        2933 |         863 |        24 |    8393 |     0 |
+| 06:25 |  1199 | 3214 |        930 |     378 |    222 |         313 |   12 |    2253 |        2794 |         847 |        12 |    8258 |     0 |
+| 06:30 |  1495 | 3172 |        933 |     377 |    222 |         313 |   12 |    2254 |        2706 |         798 |       -19 |    8119 |     0 |
+| 06:35 |  1820 | 3129 |        931 |     377 |    222 |         314 |   11 |    2253 |        2626 |         636 |         9 |    8168 |     0 |
+| 06:40 |  2190 | 3109 |        926 |     378 |    222 |         315 |   10 |    2254 |        2724 |         510 |       -21 |    8016 |     0 |
+| 06:45 |  2579 | 3075 |        932 |     377 |    222 |         315 |   11 |    2253 |        2760 |         432 |       -43 |    7756 |     0 |
+| 06:50 |  2968 | 3048 |        932 |     378 |    222 |         315 |   12 |    2254 |        2756 |         427 |       -92 |    7515 |     0 |
+| 06:55 |  3401 | 3060 |        933 |     378 |    222 |         315 |   12 |    2253 |        2669 |         382 |       -68 |    7179 |     0 |
+| 07:00 |  3792 | 3050 |        932 |     378 |    222 |         315 |   12 |    2253 |        2686 |         432 |       -72 |    6758 |     0 |
+| 07:05 |  4202 | 3035 |        931 |     377 |    222 |         314 |   11 |    2254 |        2666 |         462 |       -19 |    6320 |     0 |
+| 07:10 |  4622 | 3058 |        930 |     377 |    222 |         312 |   11 |    2254 |        2590 |         498 |       -35 |    5971 |     0 |
+| 07:15 |  5054 | 3019 |        930 |     379 |    222 |         312 |   11 |    2254 |        2483 |         551 |        51 |    5538 |     0 |
+| 07:20 |  5515 | 2992 |        930 |     380 |    222 |         313 |   12 |    2255 |        2348 |         621 |        74 |    5138 |     0 |
+| 07:25 |  5920 | 3002 |        930 |     380 |    222 |         314 |   12 |    2254 |        2289 |         602 |        93 |    4657 |     0 |
+| 07:30 |  6320 | 2973 |        929 |     379 |    223 |         315 |   11 |    2254 |        2304 |         597 |        91 |    4243 |     0 |
+| 07:35 |  6747 | 2966 |        928 |     379 |    222 |         316 |   12 |    2253 |        2300 |         550 |        49 |    3916 |     0 |
+
+** Uso de dados - Tratamento
+#+BEGIN_SRC bash
+curl 'http://www.caiso.com/outlook/SP/fuelsource.csv' | head -n 25 | tee dados.csv
+#+END_SRC
+
+#+RESULTS:
+|  Time | Solar | Wind | Geothermal | Biomass | Biogas | Small hydro | Coal | Nuclear | Natural gas | Large hydro | Batteries | Imports | Other |
+| 00:00 |   -38 | 4176 |        926 |     351 |    222 |         341 |   11 |    2257 |        6023 |        2263 |       -18 |    9315 |     0 |
+| 00:05 |   -37 | 4140 |        926 |     353 |    221 |         340 |   10 |    2257 |        6034 |        2218 |         5 |    9289 |     0 |
+| 00:10 |   -37 | 4124 |        925 |     352 |    221 |         337 |   10 |    2257 |        6011 |        2225 |        16 |    9219 |     0 |
+| 00:15 |   -37 | 4157 |        925 |     352 |    221 |         334 |    9 |    2257 |        5773 |        2224 |        18 |    9279 |     0 |
+| 00:20 |   -37 | 4184 |        925 |     353 |    222 |         334 |    9 |    2257 |        5562 |        2226 |        14 |    9325 |     0 |
+| 00:25 |   -37 | 4200 |        925 |     352 |    222 |         330 |    9 |    2256 |        5404 |        2211 |        12 |    9326 |     0 |
+| 00:30 |   -37 | 4231 |        925 |     353 |    221 |         324 |   10 |    2257 |        5384 |        2203 |         2 |    9186 |     0 |
+| 00:35 |   -37 | 4236 |        925 |     353 |    221 |         324 |   10 |    2256 |        5295 |        2181 |        -1 |    9147 |     0 |
+| 00:40 |   -37 | 4248 |        927 |     352 |    222 |         324 |   10 |    2256 |        5275 |        2158 |        -4 |    9056 |     0 |
+| 00:45 |   -37 | 4256 |        927 |     351 |    222 |         323 |   10 |    2256 |        5193 |        2141 |        -6 |    8980 |     0 |
+| 00:50 |   -37 | 4240 |        928 |     351 |    221 |         323 |   10 |    2256 |        5177 |        2077 |         3 |    8909 |     0 |
+| 00:55 |   -37 | 4221 |        927 |     353 |    221 |         322 |   10 |    2256 |        5105 |        2120 |        -4 |    8859 |     0 |
+| 01:00 |   -37 | 4240 |        926 |     353 |    221 |         321 |   10 |    2255 |        4941 |        2079 |         3 |    8870 |     0 |
+| 01:05 |   -37 | 4230 |        927 |     352 |    221 |         321 |   11 |    2255 |        4542 |        2043 |        96 |    9126 |     0 |
+| 01:10 |   -37 | 4198 |        927 |     352 |    221 |         322 |   11 |    2254 |        4381 |        1956 |        69 |    9231 |     0 |
+| 01:15 |   -37 | 4224 |        927 |     351 |    221 |         322 |   10 |    2254 |        4358 |        1875 |        -6 |    9299 |     0 |
+| 01:20 |   -37 | 4212 |        928 |     351 |    222 |         322 |   10 |    2254 |        4273 |        1812 |       -82 |    9479 |     0 |
+| 01:25 |   -37 | 4223 |        929 |     352 |    221 |         321 |   10 |    2254 |        4259 |        1832 |       -85 |    9449 |     0 |
+| 01:30 |   -37 | 4212 |        929 |     352 |    222 |         322 |   10 |    2253 |        4189 |        1882 |       -12 |    9223 |     0 |
+| 01:35 |   -37 | 4151 |        929 |     349 |    222 |         321 |   10 |    2254 |        4123 |        1894 |         8 |    9122 |     0 |
+| 01:40 |   -37 | 4134 |        931 |     350 |    222 |         321 |   10 |    2254 |        4053 |        1889 |        -1 |    9072 |     0 |
+| 01:45 |   -37 | 4095 |        929 |     349 |    222 |         320 |   10 |    2253 |        4009 |        1900 |         8 |    9040 |     0 |
+| 01:50 |   -37 | 4101 |        930 |     349 |    222 |         321 |   10 |    2254 |        3906 |        1877 |         3 |    9058 |     0 |
+| 01:55 |   -37 | 4124 |        929 |     352 |    222 |         321 |   10 |    2253 |        3853 |        1798 |        -7 |    9028 |     0 |
+
+#+BEGIN_SRC bash :exports none
+cat dados.csv | cut --complement -d"," -f1 | sed "1d"
+#+END_SRC
+
+#+name: EneCal
+#+RESULTS:
+| -38 | 4176 | 926 | 351 | 222 | 341 | 11 | 2257 | 6023 | 2263 | -18 | 9315 | 0 |
+| -37 | 4140 | 926 | 353 | 221 | 340 | 10 | 2257 | 6034 | 2218 |   5 | 9289 | 0 |
+| -37 | 4124 | 925 | 352 | 221 | 337 | 10 | 2257 | 6011 | 2225 |  16 | 9219 | 0 |
+| -37 | 4157 | 925 | 352 | 221 | 334 |  9 | 2257 | 5773 | 2224 |  18 | 9279 | 0 |
+| -37 | 4184 | 925 | 353 | 222 | 334 |  9 | 2257 | 5562 | 2226 |  14 | 9325 | 0 |
+| -37 | 4200 | 925 | 352 | 222 | 330 |  9 | 2256 | 5404 | 2211 |  12 | 9326 | 0 |
+| -37 | 4231 | 925 | 353 | 221 | 324 | 10 | 2257 | 5384 | 2203 |   2 | 9186 | 0 |
+| -37 | 4236 | 925 | 353 | 221 | 324 | 10 | 2256 | 5295 | 2181 |  -1 | 9147 | 0 |
+| -37 | 4248 | 927 | 352 | 222 | 324 | 10 | 2256 | 5275 | 2158 |  -4 | 9056 | 0 |
+| -37 | 4256 | 927 | 351 | 222 | 323 | 10 | 2256 | 5193 | 2141 |  -6 | 8980 | 0 |
+| -37 | 4240 | 928 | 351 | 221 | 323 | 10 | 2256 | 5177 | 2077 |   3 | 8909 | 0 |
+| -37 | 4221 | 927 | 353 | 221 | 322 | 10 | 2256 | 5105 | 2120 |  -4 | 8859 | 0 |
+| -37 | 4240 | 926 | 353 | 221 | 321 | 10 | 2255 | 4941 | 2079 |   3 | 8870 | 0 |
+| -37 | 4230 | 927 | 352 | 221 | 321 | 11 | 2255 | 4542 | 2043 |  96 | 9126 | 0 |
+| -37 | 4198 | 927 | 352 | 221 | 322 | 11 | 2254 | 4381 | 1956 |  69 | 9231 | 0 |
+| -37 | 4224 | 927 | 351 | 221 | 322 | 10 | 2254 | 4358 | 1875 |  -6 | 9299 | 0 |
+| -37 | 4212 | 928 | 351 | 222 | 322 | 10 | 2254 | 4273 | 1812 | -82 | 9479 | 0 |
+| -37 | 4223 | 929 | 352 | 221 | 321 | 10 | 2254 | 4259 | 1832 | -85 | 9449 | 0 |
+| -37 | 4212 | 929 | 352 | 222 | 322 | 10 | 2253 | 4189 | 1882 | -12 | 9223 | 0 |
+| -37 | 4151 | 929 | 349 | 222 | 321 | 10 | 2254 | 4123 | 1894 |   8 | 9122 | 0 |
+| -37 | 4134 | 931 | 350 | 222 | 321 | 10 | 2254 | 4053 | 1889 |  -1 | 9072 | 0 |
+| -37 | 4095 | 929 | 349 | 222 | 320 | 10 | 2253 | 4009 | 1900 |   8 | 9040 | 0 |
+| -37 | 4101 | 930 | 349 | 222 | 321 | 10 | 2254 | 3906 | 1877 |   3 | 9058 | 0 |
+| -37 | 4124 | 929 | 352 | 222 | 321 | 10 | 2253 | 3853 | 1798 |  -7 | 9028 | 0 |
+** Uso de dados - Gráficos
+#+begin_src python :var x=EneCal :results file :exports both :tangle plot.py
+import matplotlib, numpy
+import matplotlib.pyplot as plt
+fig=plt.figure(figsize=(4,2))
+plt.plot(x)
+plt.title("Energia na Califórnia")
+fig.tight_layout()
+plt.savefig('python-matplot-fig.png')
+return 'python-matplot-fig.png' # return filename to org-mode
+#+end_src
+
+#+RESULTS:
+[[file:python-matplot-fig.png]]
+
+** Operações
+- tangle -> Código
+- export -> Documentação
+
+
+
+
+\begin{equation}
+\left.
+\begin{aligned}
+Q_S = & \;Q_D Q_E &+& \;Q_F Q_G \;&+& \;Q_D Q_A Q_B\; +\\
+	  & \;Q_D Q_A Q_C &+& \;Q_D Q_E Q_K &+& \;Q_D Q_E Q_L  \;+\\
+      & \;Q_D Q_G Q_K &+& \;Q_D Q_G Q_L
+\end{aligned} \right.
+\label{eq:qs}
+\end{equation}
+
+\begin{equation}
+\left.
+\begin{aligned}
+Q_S = & \;Q_D Q_E &+& \;Q_F Q_G \;&+& \;Q_D Q_A Q_B &+&\\
+	  & \;Q_D Q_A Q_C &+& \;Q_D Q_E Q_K &+& \;Q_D Q_E Q_L \;&+&\\
+      & \;Q_D Q_G Q_K &+& \;Q_D Q_G Q_L
+\end{aligned} \right.
+\label{eq:qs}
+\end{equation}
+

@@ -1,0 +1,95 @@
+#+TITLE:  ED EX VI
+
+** Tradução tirinha
+Programadores de verdade usam nano
+Programadores de verdade usam vim
+Programadores de verdade usam ed
+Programadores de verdade usam cat
+Programadores de verdade usam uma agulha magnetizada e uma mão firme
+Desculpa, mas programadores de verdade usam borboletas
+eles abrem as mãos e deixam suas asas delicadas baterem uma vez, e a perturbação gera um efeito cascata que altera as correntes de ar, causando pequenos bolsões de alta pressão que atuam como lentes que desviam os raios cósmicos os concentrando no disco de um HD alterando o BIT necessário.
+
+Maneiro, obviamente deve ter um comando no emacs para fazer isso.
+é claro, o famoso Cx Mx Mborboleta.
+
+Maldito, emacs
+
+* ED 1969
+** Roteiro
+então a gente está em 1969
+a
+estou escrevendo na linha 1 linha
+.
+i
+esta linha vai aparecer antes
+p
+.
+P
+1
+2p
++
+d
+2a
+e esta depois
+.
+1
++
++
++
+H
+h
+w
+h
+arquivo
+- Eventualmente as pessoas começaram a usar monitores de vidro usar tela maior
+1,$p
+1,2p
+;p
+2d
+u
+!ls
+r arquivo
+
+
+** Comandos
+- a adicionar no fim
+- i adicionar no início
+- w escrever em um arquivo
+- p imprime linhas
+- . linha atual
+- $ última linha
+- $ última linha
+- / RE / próxima linha onde RE é verdadeira
+- ; da atual até a ultima linha
+- j junta linhas
+- n imprime linhas numeradas
+- = imprime número da linha
+- y copia a linha
+- x cola a última linha copiada
+- 2,3t5 copia linhas para depois de outra linha
+- u desfaz (desfaz desfazer também)
+- 2,3m5 move linhas para depois de outra linha
+- r lê de algum lugar
+- ! executa comando
+- e editar de algum lugar
+- 3k<p> marcar linha com <p> e você pode usar '<p> para endereçar a tal linha
+- '<p>=
+- s modificar
+- g / RE / comando aplicar comando nas linhas onde RE é verdadeira (g,re,p)
+
+* EX 1976
+** Comandos
+- a adicionar no fim
+- exu <a> uso do commando <a>
+- i adicionar no início
+- p imprime linhas
+- j junta linhas
+- n imprime linhas numeradas
+  ...
+- uso de buffers
+** VI
+*** Comandos
+- Q voltar para modo ex
+- : executar um comando em modo ex
+- "<p>y
+- viu in ex mode

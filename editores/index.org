@@ -1,0 +1,20 @@
+#+TITLE: Editores de Texto
+
+* Guerra dos Editores de Texto
+- Vim vs Nano vs Emacs
+** Meme
+*** XKCD - Randall Munroe
+#+BEGIN_SRC bash :results file :file /tmp/real_programmers.png
+wget -O - https://imgs.xkcd.com/comics/real_programmers.png
+#+END_SRC
+
+#+ATTR_HTML: :width 800
+#+ATTR_LATEX: :width 0.3\textwidth
+#+RESULTS:
+[[file:/tmp/real_programmers.png]]
+
+** Plano
+1. [[file:ed_ex_vi.org][ed, cat, ex(vi)]]
+2. [[file:pico_nano.org][pico/nano]]
+3. [[(n)vim.org][(n)vim]]
+4. emacs
