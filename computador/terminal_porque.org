@@ -1,0 +1,44 @@
+#+TITLE: Terminal
+#+SUBTITLE: Por que e como usar?
+#+AUTHOR:
+#+DATE:
+#+BEAMER_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation,aspectratio=169,14pt]
+#+OPTIONS: H:2 toc:nil
+#+LATEX_HEADER:\input{../aux/slidepreamble}
+#+BEAMER_HEADER:\input{../aux/beameroptions}
+#+LATEX_HEADER:\usepackage[main=portuguese]{babel}
+#+LATEX_HEADER:\usepackage{hyperref}
+#+LATEX_HEADER:\usepackage{natbib}
+#+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col)
+# #+BEAMER_HEADER:\setbeameroption{show notes on second screen}
+ 
+* Por que usar?
+** Por que?
+- Computadores entendem bem texto
+- Ações repetidas são mais rápidas
+- Criar um fluxo de ações seguidas
+** Exemplo
+- Organizar fotos por ano
+  - Criar pasta por ano
+  - mover arquivos para a pasta
+** Como usar
+- SHELL @@beamer:\pause@@ (sh, bash, zsh)@@beamer:\pause@@
+- uma conversa@@beamer:\pause@@
+  1. Computador diz estar pronto@@beamer:\pause@@
+  2. Você manda fazer algo@@beamer:\pause@@
+  3. Computador responde @@beamer:\pause@@
+** Como usar
+#+ATTR_LATEX: :width 8cm
+#+RESULTS:
+[[./linhaDeComando.png]]
+** Comandos mais utilizados
+- listar arquivos/pastas @@beamer:\pause@@
+- wildcards (*) @@beamer:\pause@@
+- criar/atualizar arquivos (touch) @@beamer:\pause@@
+- criar pastas (mkdir) @@beamer:\pause@@
+- ler arquivo @@beamer:\pause@@(cat/less)
+- mudar de pasta@@beamer:\pause@@
+- copiar arquivos/pastas@@beamer:\pause@@
+- mover arquivos/pastas@@beamer:\pause@@
+- procurar ajuda @@beamer:\pause@@

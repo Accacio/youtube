@@ -1,0 +1,56 @@
+#+TITLE: Introduçao
+
+* editar arquivo word
+Então teu professor, chefe mandou você fazer um relatório, ou você tá escrevendo
+uma monografia.
+
+** criar pasta
+você cria  uma pasta, um documento e começa a modificar
+
+
+** Enviar para o professor uma primeira versão
+COPIAAAAAAAR
+algum tempo depois tu pensa em fazer uma modificação no arquivo,
+tentando manter a mesma versão como bkp.
+
+Somente as 25 ultimas hmmm
+https://support.microsoft.com/pt-br/office/exibir-as-versões-anteriores-de-arquivos-do-office-5c1e076f-a9c9-41b8-8ace-f77b9642e2c2?ui=pt-BR&rs=pt-BR&ad=BR#ID0EBBCAAA=Office_2019-2016
+
+E se eu quiser mais que 25???
+E se eu tiver mais que 1 arquivo?
+
+#+begin_src bash
+echo "oi" > {1..30}.txt
+#+end_src
+
+** Zipar
+*** data do dia
+*** falar do tamanho
+*** falar de diff
+
+echo "hello" > 2.txt
+echo "hello\n oi" > 3.txt
+diff 2.txt 3.txt
+*** fazer o mesmo com o docx
+*** mostrar que o docx é um zip
+unzip TCC.docx -d tcc
+
+o que eu poderia usar que permite salvar os diff
+* ENTER GIT
+
+git config --edit
+#+begin_src conf ~/.gitconfig
+[diff "word"]
+    binary = true
+    textconv = unzip -ca
+#+end_src
+
+vim .gitattributes
+#+begin_src conf ~/.gitconfig
+*.docx diff=word
+#+end_src
+** fazer diff no terminal de novo
+git diff -- TCC.docx
+** abrir no emacs
+emacsclient -c .
+** fazer git log

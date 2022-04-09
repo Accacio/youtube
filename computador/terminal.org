@@ -1,0 +1,133 @@
+#+TITLE: Terminal, Shell & linha de comando
+#+SUBTITLE: Quem são? Onde vivem? Como usá-los?
+#+AUTHOR:
+#+DATE:
+#+BEAMER_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation,aspectratio=169,14pt]
+#+OPTIONS: H:2 toc:nil
+#+LATEX_HEADER:\input{../aux/slidepreamble}
+#+BEAMER_HEADER:\input{../aux/beameroptions}
+#+LATEX_HEADER:\usepackage[main=portuguese]{babel}
+#+LATEX_HEADER:\usepackage{hyperref}
+#+LATEX_HEADER:\usepackage{natbib}
+#+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col)
+#+BEAMER: \input{../aux/Sommaire}
+# #+BEAMER_HEADER:\setbeameroption{show notes on second screen}
+ 
+* História
+** 60's-70's
+#+BEGIN_SRC bash :results file :file /tmp/serverRoom.png :exports results
+wget -O - https://tr4.cbsistatic.com/hub/i/2014/04/07/6b70d355-41ee-4fe2-9043-b1f6329ab299/c357520cbb7f80cf0ebd46d11ba3ce26/system360m50.jpg
+#+END_SRC
+
+#+ATTR_HTML: :width 800
+#+ATTR_LATEX: :width 7cm
+#+CAPTION: Sala do Servidor
+#+RESULTS[4ce59620a546790f742034c642ab90537bc51bd4]:
+[[file:/tmp/serverRoom.png]]
+
+** Estrutura
+#+begin_src dot :file /tmp/structure.png
+digraph matrix
+{
+        "Cliente 1" -> Servidor;
+         Servidor -> "Cliente 1";
+        "Cliente 2" -> Servidor;
+         Servidor -> "Cliente 2";
+        "Cliente 3" -> Servidor;
+         Servidor -> "Cliente 3";
+        "Cliente 4" -> Servidor;
+         Servidor -> "Cliente 4";
+}
+#+end_src
+
+#+ATTR_LATEX: :width 8cm
+#+CAPTION: Estrutura cliente-servidor
+#+RESULTS[3a3841845f61648570c976090976d54a5d5acd1e]:
+[[file:/tmp/structure.png]]
+
+** Terminal
+- Conceito de Terminal Burro @@beamer:\pause@@
+  + Pouca Memória @@beamer:\pause@@
+  + conexão Rede @@beamer:\pause@@
+*** 2 necessidades básicas @@beamer:\pause@@
+- Usuário precisa enviar a mensagem @@beamer:\pause@@
+- precisa conseguir ler a mensagem @@beamer:\pause@@
+- solução? @@beamer:\pause@@
+   Máquinas de escrever electromecânicas ( Teletipos )
+
+   /já usadas para telegrafia desde o século XIX/
+** Teletipos
+- Teletypewriters (TTY)
+#+BEGIN_SRC bash :results file :file /tmp/terminal.png :exports results
+wget -O - https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/IBM2741.JPG/220px-IBM2741.JPG
+#+END_SRC
+
+#+ATTR_LATEX: :width 6cm
+#+caption: Teletipo com uma teleimpressora
+#+RESULTS[01ac0ad3255bd7a7242df73cfb0de3889c72410b]:
+[[file:/tmp/terminal.png]]
+
+** Terminal
+#+begin_src dot :file /tmp/structureTerminal.png
+digraph matrix
+{
+        "Terminal 1" -> Mainframe;
+         Mainframe -> "Terminal 1";
+        "Terminal 2" -> Mainframe;
+         Mainframe -> "Terminal 2";
+        "Terminal 3" -> Mainframe;
+         Mainframe -> "Terminal 3";
+        "Terminal 4" -> Mainframe;
+         Mainframe -> "Terminal 4";
+}
+#+end_src
+
+#+ATTR_LATEX: :width 8cm
+#+CAPTION: Estrutura Terminais - Mainframe
+#+RESULTS:
+[[file:/tmp/structureTerminal.png]]
+** Usos
+- Universidades ( Pesquisa ) @@beamer:\pause@@
+- Bibliotecas ( Empréstimo e verificação de catálogo ) @@beamer:\pause@@
+- Bancos ( Operações financeiras )@@beamer:\pause@@
+- Hospitais ( Almoxarifado e internação )
+- etc
+** Evolução Natural
+- Tubos de raios catódicos @@beamer:\pause@@ Usar uma "TV" para ver @@beamer:\pause@@
+- Teletipos de vidro ( Glass TTY ) @@beamer:\pause@@
+#+BEGIN_SRC bash :results file :file /tmp/terminal1.png :exports results
+wget -O - https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/DEC_VT100_terminal_transparent.png/220px-DEC_VT100_terminal_transparent.png
+#+END_SRC
+
+#+ATTR_LATEX: :width 4cm
+#+caption: DEC VT100
+#+RESULTS:
+[[file:/tmp/terminal1.png]]
+** Interface usuário máquina
+- Necessária uma interface usuário \leftrightarrow terminal @@beamer:\pause@@
+  + Shell @@beamer:\pause@@
+    - Na época interface por linha de comando  @@beamer:\pause@@
+    - Interface Gráfica após algum tempo (XEROX ALTO)
+** Shell Gráfico
+*** Alguns exemplos:
+- EXPLORER.EXE (windows)
+- X Window System  X11 (unix-like)
+- Mission Control (mac)
+** Shell por linha de commando
+PowerShell
+cmd.exe
+COMMAND.COM
+* Hoje em dia
+** Usos
+#+BEGIN_SRC bash :results file :file /tmp/terminalDeficientesAuditivos.jpg :exports results
+wget -O - https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/425tdd.JPG/300px-425tdd.JPG
+#+END_SRC
+
+#+ATTR_LATEX: :width 8cm
+#+caption: Utilizado ainda hoje para deficientes auditivos
+#+RESULTS:
+[[file:/tmp/terminalDeficientesAuditivos.jpg]]
+** Emuladores de Terminal
+* Como usar
+** Shell por Linha de comando

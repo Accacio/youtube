@@ -1,0 +1,18 @@
+#+TITLE: RSS
+#+STARTUP: content
+
+* RSS
+** Significado
+- ver últimas atualizações
+https://pt.wikipedia.org/wiki/RSS
+** Usos
+- podcast
+- blogs
+- forums
+- notícias
+- artigos
+* Emacs
+** Elfeed
+https://github.com/skeeto/elfeed
+*** doom-emacs
+adicionar :app (rss) no init.el

@@ -1,0 +1,146 @@
+% Created 2021-01-28 jeu. 19:13
+% Intended LaTeX compiler: pdflatex
+\documentclass[presentation,aspectratio=169,14pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage[cache=false]{minted}
+\input{../aux/slidepreamble}
+\usepackage[main=portuguese, english]{babel}
+\usepackage{hyperref}
+\usepackage{natbib}
+\usetheme{default}
+\date{}
+\title{Terminal, Shell \& linha de comando}
+\subtitle{Quem são? Onde vivem? Como usá-los?}
+\input{../aux/beameroptions}
+\begin{document}
+
+\maketitle
+\input{../aux/Sommaire}
+
+\section{História}
+\label{sec:org331a3e9}
+\begin{frame}[label={sec:org50eecbc}]{60's-70's}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=7cm]{/tmp/serverRoom.png}
+\caption{Sala do Servidor}
+\end{figure}
+\end{frame}
+
+\begin{frame}[label={sec:org28163f3}]{Estrutura}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=8cm]{/tmp/structure.png}
+\caption{Estrutura cliente-servidor}
+\end{figure}
+\end{frame}
+
+\begin{frame}[label={sec:org16a8bf8}]{Terminal}
+\begin{itemize}
+\item Conceito de Terminal Burro \pause
+\begin{itemize}
+\item Pouca Memória \pause
+\item conexão Rede \pause
+\end{itemize}
+\end{itemize}
+\begin{block}{2 necessidades básicas \pause}
+\begin{itemize}
+\item Usuário precisa enviar a mensagem \pause
+\item precisa conseguir ler a mensagem \pause
+\item solução? \pause
+Máquinas de escrever electromecânicas ( Teletipos )
+
+\emph{já usadas para telegrafia desde o século XIX}
+\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}[label={sec:org9711761}]{Teletipos}
+\begin{itemize}
+\item Teletypewriters (TTY)
+\end{itemize}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=6cm]{/tmp/terminal.png}
+\caption{Teletipo com uma teleimpressora}
+\end{figure}
+\end{frame}
+
+\begin{frame}[label={sec:orgcabbf6a}]{Terminal}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=8cm]{/tmp/structureTerminal.png}
+\caption{Estrutura Terminais - Mainframe}
+\end{figure}
+\end{frame}
+\begin{frame}[label={sec:orgf66ba05}]{Usos}
+\begin{itemize}
+\item Universidades ( Pesquisa ) \pause
+\item Bibliotecas ( Empréstimo e verificação de catálogo ) \pause
+\item Bancos ( Operações financeiras )\pause
+\item Hospitais ( Almoxarifado e internação )
+\item etc
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:org85fef62}]{Evolução Natural}
+\begin{itemize}
+\item Tubos de raios catódicos \pause Usar uma ``TV'' para ver \pause
+\item Teletipos de vidro ( Glass TTY ) \pause
+\end{itemize}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=4cm]{/tmp/terminal1.png}
+\caption{DEC VT100}
+\end{figure}
+\end{frame}
+\begin{frame}[label={sec:org302ef0d}]{Interface usuário máquina}
+\begin{itemize}
+\item Necessária uma interface usuário \(\leftrightarrow\) terminal \pause
+\begin{itemize}
+\item Shell \pause
+\begin{itemize}
+\item Na época interface por linha de comando  \pause
+\item Interface Gráfica após algum tempo (XEROX ALTO)
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:orgb455bcc}]{Shell Gráfico}
+\begin{block}{Alguns exemplos:}
+\begin{itemize}
+\item EXPLORER.EXE (windows)
+\item X Window System  X11 (unix-like)
+\item Mission Control (mac)
+\end{itemize}
+\end{block}
+\end{frame}
+\section{Como usar}
+\label{sec:org613a5bd}
+\begin{frame}[label={sec:org8e67b50}]{Shell}
+\end{frame}
+\section{Hoje em dia}
+\label{sec:org0543f1e}
+\begin{frame}[label={sec:orga932dda}]{Usos}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=8cm]{/tmp/terminalDeficientesAuditivos.jpg}
+\caption{Utilizado ainda hoje para deficientes auditivos}
+\end{figure}
+\end{frame}
+\begin{frame}[label={sec:orgfcfcb5e}]{Emuladores de Terminal}
+\end{frame}
+\end{document}

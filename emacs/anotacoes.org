@@ -1,0 +1,23 @@
+#+TITLE: Fluxo de trabalho
+
+* Método:
+** Zettelkasten (Caixas de nota)
+Notas ligadas por códigos (tags):
+- Notas fugazes
+  + pequenas anotações
+- Notas Permanentes
+  + Recursos: Livros, artigos, sites
+  + Notas Próprias Sobre assuntos
+
+* Emacs (Doom)
+** Pacotes
+- org-noter
+- org-ref
+- org-roam
+- deft
+** Zettelkasten
+*** Notas fugazes
+- Journal
+*** Notas Permanentes
+- https://arxiv.org
+- Lista de Leitura

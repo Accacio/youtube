@@ -1,0 +1,352 @@
+
+
+* Instalaçao
+
+
+** instalar Emacs
+#+BEGIN_SRC bash
+sudo snap install emacs --classic
+#+END_SRC
+
+** Mostrar pacotes
+multiplos repositorios
+  =M-x package-list-packages=
+https://github.com/hlissner/doom-emacs
+https://www.spacemacs.org
+https://github.com/rougier/nano-emacs
+** Instalar evil
+*** refresh
+#+BEGIN_SRC elisp
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+#+END_SRC
+=M-x package-install=
+=evil-mode=
+** instalar git
+Controle de versão
+#+BEGIN_SRC bash
+sudo apt install git
+#+END_SRC
+** instalar ripgrep
+como estou usando ubuntu 18.10
+#+BEGIN_SRC bash
+sudo snap install ripgrep
+#+END_SRC
+** clonar doom emacs
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+
+* Explicar doom
+** config.el
+configurações próprias
+** package.el
+** init.el
+* colocando configuraçao
+** packages.el
+#+begin_src elisp
+(package! matlab-mode)
+
+
+(package! org-roam-server)
+(package! org-roam-bibtex
+  :recipe (:host github :repo "org-roam/org-roam-bibtex"))
+;; When using org-roam via the `+roam` flag
+(unpin! org-roam company-org-roam)
+(unpin! bibtex-completion helm-bibtex ivy-bibtex)
+(package! org-journal)
+(package! org-kanban
+  :recipe (:host github :repo "gizmomogwai/org-kanban"))
+(package! org-pdftools
+  :recipe (:host github :repo "fuxialexander/org-pdftools"))
+
+(package! org-ref
+  :recipe (:host github :repo "jkitchin/org-ref"))
+(package! org-noter
+  :recipe (:host github :repo "weirdNox/org-noter"))
+(package! org-noter-pdftools
+  :recipe (:host github :repo "fuxialexander/org-pdftools"))
+#+end_src
+** init.el
+#+begin_src emacs-lisp
+  :completion
+(company +childframe)           ; the ultimate code completion backend
+       (ivy +childframe)               ; a search engine for love and life
+
+:ui
+                minimap
+       deft              ; notational velocity for Emacs
+       hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
+       (ligatures +extra)      ; ligatures or substitute text with pretty symbols
+       modeline          ; snazzy, Atom-inspired modeline, plus API
+neotree
+       ophints           ; highlight the region an operation acts on
+       (popup +defaults)   ; tame sudden yet inevitable temporary windows
+       unicode           ; extended unicode support for various languages
+       vc-gutter         ; vcs diff in the fringe
+       vi-tilde-fringe   ; fringe tildes to mark beyond EOB
+       window-select     ; visually switch windows
+       workspaces        ; tab emulation, persistence & separate workspaces
+       zen               ; distraction-free coding or writing
+
+
+                :editor
+
+       (evil +everywhere); come to the dark side, we have cookies
+       file-templates    ; auto-snippets for empty files
+       fold              ; (nigh) universal code folding
+
+       (format )  ; automated prettiness
+
+       multiple-cursors  ; editing in many places at once
+       rotate-text       ; cycle region at point between text candidates
+       snippets          ; my elves. They type so I don't have to
+
+:emacs
+       electric          ; smarter, keyword-based electric-indent
+       undo              ; persistent, smarter undo for your inevitable mistakes
+       vc                ; version-control and Emacs, sitting in a tree
+
+
+                :checkers
+
+       (syntax              ; tasing you for every semicolon you forget
+        +childframe)
+       spell             ; tasing you for misspelling mispelling
+       grammar           ; tasing grammar mistake every you make
+
+                :tools
+
+       biblio
+       editorconfig      ; let someone else argue about tabs vs spaces
+       (eval +overlay)     ; run code, run (also, repls)
+       (lookup             ; navigate your code and its documentation
+        +dictionary
+        +docsets
+        )
+
+
+       magit             ; a git porcelain for Emacs
+       make              ; run make tasks from Emacs
+       pass              ; password manager for nerds
+       pdf               ; pdf enhancements
+       ;;prodigy           ; FIXME managing external services & code builders
+       rgb               ; creating color strings
+
+
+
+
+       :lang
+       ;;agda              ; types of types of types of types...
+       ;;assembly          ; assembly for fun or debugging
+       cc                ; C/C++/Obj-C madness
+       csharp            ; unity, .NET, and mono shenanigans
+       data              ; config/data formats
+       emacs-lisp        ; drown in parentheses
+       latex             ; writing papers in Emacs has never been so fun
+       ledger            ; an accounting system in Emacs
+       lua               ; one-based indices? one-based indices
+       markdown          ; writing docs for people to ignore
+       (org              ; organize your plain life in plain text
+        +roam
+        +present
+        +pomodoro
+        +pretty
+        )
+       plantuml          ; diagrams for confusing people more
+       python            ; beautiful is better than ugly
+       rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       sh                ; she sells {ba,z,fi}sh shells on the C xor
+#+end_src
+** on config.el
+#+begin_src emacs-lisp
+
+(after! ivy-posframe
+  (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+  )
+
+(setq org-directory "~/org/")
+
+(after! deft
+    (setq deft-directory "~/org/")
+    (setq deft-recursive t)
+)
+
+(after! org-roam
+  (setq org-roam-graph-viewer (executable-find "vimb"))
+  (setq org-roam-graph-executable "/usr/bin/neato")
+  (setq org-roam-directory "~/org/")
+  (setq org-roam-graph-extra-config '(("overlap" . "false")))
+  (setq org-roam-graph-exclude-matcher '("private" "ledger" "elfeed" "readinglist"))
+
+  (setq bibtex-completion-bibliography '("~/bibliography.bib")
+        bibtex-completion-library-path '("~/bibliography/")
+        bibtex-completion-find-note-functions '(orb-find-note-file))
+
+  (setq org-roam-dailies-capture-templates
+        '(("d" "daily" plain (function org-roam-capture--get-point)
+           ""
+           :immediate-finish t
+           :file-name "private-%<%Y-%m-%d>"
+           :head "#+TITLE: %<%Y-%m-%d>")))
+)
+
+
+(after! org-kanban
+  :config
+(defun org-kanban//link-for-heading (heading file description)
+  "Create a link for a HEADING optionally USE-FILE a FILE and DESCRIPTION."
+  (if heading
+      (format "[[*%s][%s]]" heading description)
+    (error "Illegal state")))
+  )
+
+
+
+;; org-ref
+(use-package! org-ref)
+(after! org-ref
+    (setq org-ref-default-bibliography '("~/bibliography.bib")
+          org-ref-pdf-directory "~/bibliography/"
+          org-ref-note-title-format "* TODO %y - %t\n :PROPERTIES:\n  :Custom_ID: %k\n  :NOTER_DOCUMENT: %F\n :ROAM_KEY: cite:%k\n  :AUTHOR: %9a\n  :JOURNAL: %j\n  :YEAR: %y\n  :VOLUME: %v\n  :PAGES: %p\n  :DOI: %D\n  :URL: %U\n :END:\n\n"
+          org-ref-notes-directory "~/org/"
+          org-ref-notes-function 'orb-edit-notes)
+    )
+
+
+(use-package! org-roam-bibtex
+  :after (org-roam)
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :config
+  ;; (setq org-roam-server-host "172.16.3.168")
+  (setq orb-preformat-keywords
+   '("=key=" "title" "url" "file" "author-or-editor" "keywords"))
+  (setq orb-templates
+        '(("r" "ref" plain (function org-roam-capture--get-point)
+           ""
+           :file-name "${=key=}"
+           :head "#+TITLE: ${=key=}: ${title}
+#+ROAM_KEY: ${ref}
+#+ROAM_TAGS: article
+
+- tags ::
+- keywords :: ${keywords}
+
+
+* ${title}
+  :PROPERTIES:
+  :Custom_ID: ${=key=}
+  :URL: ${url}
+  :AUTHOR: ${author-or-editor}
+  :NOTER_DOCUMENT: %(file-relative-name (orb-process-file-field \"${=key=}\") (print org-directory))
+  :NOTER_PAGE:
+  :END:
+
+** CATALOG
+
+*** Motivation :springGreen:
+*** Model :lightSkyblue:
+*** Remarks
+*** Applications
+*** Expressions
+*** References :violet:
+
+** NOTES
+"
+           :unnarrowed t))))
+
+  (org-roam-bibtex-mode)
+(use-package! org-roam-server)
+
+(use-package! org-journal
+  :bind
+  ("C-c n j" . org-journal-new-entry)
+  ("C-c n t" . org-journal-today)
+  :config
+  (setq org-journal-date-prefix "#+TITLE: "
+        org-journal-time-prefix "* "
+        org-journal-file-format "private-%Y-%m-%d.org"
+        org-journal-dir "~/org/"
+        org-journal-carryover-items nil
+        org-journal-date-format "%Y-%m-%d")
+  ;; do not create title for dailies
+  (set-file-template! "/private-.*\\.org$"    :trigger ""    :mode 'org-mode)
+  (print +file-templates-alist)
+  (defun org-journal-today ()
+    (interactive)
+    (org-journal-new-entry t)))
+
+
+(use-package! org-noter
+  :config
+  (setq
+   org-noter-pdftools-markup-pointer-color "yellow"
+   org-noter-notes-search-path '("~/org")
+   ;; org-noter-insert-note-no-questions t
+   org-noter-doc-split-fraction '(0.7 . 03)
+   org-noter-always-create-frame nil
+   org-noter-hide-other nil
+   org-noter-pdftools-free-pointer-icon "Note"
+   org-noter-pdftools-free-pointer-color "red"
+   org-noter-kill-frame-at-session-end nil
+   )
+  (map! :map (pdf-view-mode)
+        :leader
+        (:prefix-map ("n" . "notes")
+          :desc "Write notes"                    "w" #'org-noter)
+        )
+  )
+
+
+(use-package! org-pdftools
+  :hook (org-load . org-pdftools-setup-link))
+
+
+(use-package! org-noter-pdftools
+  :after org-noter
+  :config
+  (with-eval-after-load 'pdf-annot
+    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+
+
+(setq display-line-numbers-type 'relative)
+
+
+;; Spell-check and grammar
+(let ((langs '("american" "fr_FR" "pt_BR")))
+      (setq lang-ring (make-ring (length langs)))
+      (dolist (elem langs) (ring-insert lang-ring elem)))
+(let ((dics '("american-english" "french" "portuguese")))
+      (setq dic-ring (make-ring (length dics)))
+      (dolist (elem dics) (ring-insert dic-ring elem)))
+
+  (defun cycle-ispell-languages ()
+      (interactive)
+      (let (
+            (lang (ring-ref lang-ring -1))
+            (dic (ring-ref dic-ring -1))
+            )
+        (ring-insert lang-ring lang)
+        (ring-insert dic-ring dic)
+        (ispell-change-dictionary lang)
+        (setq ispell-complete-word-dict (concat "/usr/share/dict/" dic))
+        ))
+(global-set-key [f6] 'cycle-ispell-languages)
+
+#+end_src
+* instalar pdf-tools
+=M-x pdf-tools-install=
+
+* criar readme
+
+
+* Configuração Doom emacs
+
+#+begin_src bash
+git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+git clone https://github.com/Accacio/doom .doom.d
+~/.emacs.d/bin/doom install
+~/.emacs.d/bin/doom sync
+#+end_src
+
+Após clonar repositórios
+=M-x pdf-tools-install=

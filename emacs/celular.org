@@ -1,0 +1,15 @@
+#+TITLE: Integração org-mode celular ↔ Computador
+
+* Necessário
+** Nuvem
+- Drobpox
+** Computador
+- [[https://www.dropbox.com/install-linux][Drobpox]]
+- mover pasta com org para o Dropbox
+- modificar configuração emacs
+  - [[file:~/.doom.d/config.el::setq org-directory "~/org/"]]
+** Celular
+- pasta pro org
+- Orgzly
+- Dropbsync
+- Dropbox
