@@ -1,0 +1,9 @@
+#+TITLE: Tex
+
+* \def
+* \vskip 2cm
+* \bf Teste
+* \hrule
+* Equações $\int_2^\pi 2\over n \sum_i^j x_i^{x^x} \eqno 2$
+* coleções de macros
+LaTeX
