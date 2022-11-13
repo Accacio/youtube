@@ -1,3 +1,5 @@
 #+TITLE: Readme
 
 Repositorio para videos do youtube
+
+- Série de Raytracing se encontra em https://github.com/Accacio/raytracing_fds
